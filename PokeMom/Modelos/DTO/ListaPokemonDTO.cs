@@ -2,12 +2,12 @@
 
 namespace PokeMom.Modelos.DTO;
 
-internal class ListaPokemonDTO
+internal record ListaPokemonDTO
 {
     [JsonPropertyName("results")]
-    public List<Pokemon>? Pokemons { get; set; }
+    public List<PokemonListagemDTO>? Pokemons { get; init; }
     [JsonPropertyName("next")]
-    public string? ProximaPagina { get; set; }
+    public string? ProximaPagina { get; init; }
     [JsonPropertyName("previous")]
-    public string? PaginaAnterior { get; set; }
+    public string? PaginaAnterior { get; init; }
 }

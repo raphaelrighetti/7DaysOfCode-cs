@@ -18,16 +18,19 @@ internal class MenuListagemPokemon : Menu
         base.Prompt();
 
         var client = new RestClient(url);
-        var request = new RestRequest("/", Method.Get);
-        var response = client.GetAsync<ListaPokemonDTO>(request).Result;
+        var requestLista = new RestRequest("/", Method.Get);
+        var listaPokemon = client.GetAsync<ListaPokemonDTO>(requestLista).Result;
 
-        foreach (var pokemon in response!.Pokemons!)
+        foreach (var pokemon in listaPokemon!.Pokemons!)
         {
-            Console.WriteLine(pokemon.ToString());
+            var requestPokemon = new RestRequest($"/{pokemon.Nome}", Method.Get);
+            var pokemonDTO = client.GetAsync<PokemonDTO>(requestPokemon).Result;
+
+            Console.WriteLine(pokemonDTO);
         }
 
         Console.WriteLine("\nAperte \"1\" para voltar para a página anterior\n" +
-            "Aperte \"2\" para ir para a próxima página" +
+            "Aperte \"2\" para ir para a próxima página\n" +
             "Aperte qualquer outra tecla para sair...");
 
         var tecla = Console.ReadKey();
@@ -37,16 +40,16 @@ internal class MenuListagemPokemon : Menu
         switch (tecla.KeyChar)
         {
             case '1':
-                if (response.PaginaAnterior != null)
+                if (listaPokemon.PaginaAnterior != null)
                 {
-                    url = response.PaginaAnterior;
+                    url = listaPokemon.PaginaAnterior;
                 }
                 Prompt();
                 break;
             case '2':
-                if (response.ProximaPagina != null)
+                if (listaPokemon.ProximaPagina != null)
                 {
-                    url = response.ProximaPagina!;
+                    url = listaPokemon.ProximaPagina!;
                 }
                 Prompt();
                 break;
