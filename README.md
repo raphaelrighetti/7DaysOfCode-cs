@@ -33,7 +33,8 @@ O desafio desse dia consistia em construir menus interativos com as seguintes fu
 1. Mensagem de boas vindas personalizada com o nome do usuário recebido por input
 2. Menu principal de opções com as seguintes opções:
 	1. Adotar um Pokémon
-		Esse é o menu que lista a página de Pokémon disponíveis para a adoção e dá a possibilidade de navegar entre as páginas disponíveis, visualizar mais informações sobre um Pokémon específico e realizar a adoção de um Pokémon escolhido pelo usuário
+		
+  		Esse é o menu que lista a página de Pokémon disponíveis para a adoção e dá a possibilidade de navegar entre as páginas disponíveis, visualizar mais informações sobre um Pokémon específico e realizar a adoção de um Pokémon escolhido pelo usuário
 	2. Listar os Pokémon adotados
 	3. Sair
 	
