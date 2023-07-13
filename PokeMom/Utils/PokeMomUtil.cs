@@ -24,11 +24,16 @@ internal static class PokeMomUtil
         }
     }
 
-    public static bool OpcaoValida(string? opcao)
+    public static bool OpcaoEhValida(string? opcao)
     {
         if (opcao == null) return false;
         if (opcao.Equals("")) return false;
 
+        return true;
+    }
+
+    public static bool OpcaoEhNumeroPositivo(string opcao)
+    {
         try
         {
             var numeroOpcao = int.Parse(opcao);

@@ -5,8 +5,18 @@ namespace PokeMom.Modelos.DTO;
 
 internal record HabilidadeDTO
 {
+    private string? habilidade;
+
     public JsonElement? Ability { get; init; }
-    public string Habilidade => JsonSerializer.Deserialize<ConteudoHabilidadeDTO>(Ability!.Value)!.Nome!;
+    public string Habilidade
+    {
+        get
+        {
+            habilidade ??= JsonSerializer.Deserialize<ConteudoHabilidadeDTO>(Ability!.Value)!.Nome!;
+
+            return habilidade;
+        } 
+    }
 
     private record ConteudoHabilidadeDTO
     {

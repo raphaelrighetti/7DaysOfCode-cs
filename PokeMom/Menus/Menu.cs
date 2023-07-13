@@ -1,13 +1,17 @@
-﻿namespace PokeMom.Menus;
+﻿using PokeMom.Modelos;
+
+namespace PokeMom.Menus;
 
 internal abstract class Menu
 {
-    public Menu(string titulo)
+    public Menu(string titulo, Usuario usuario)
     {
         Titulo = titulo;
+        Usuario = usuario;
     }
 
     public string Titulo { get; set; }
+    public Usuario Usuario { get; set; }
 
     public virtual void Prompt()
     {
