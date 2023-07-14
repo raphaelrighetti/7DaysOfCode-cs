@@ -1,26 +1,26 @@
-﻿using PokeMom.Modelos;
-using PokeMom.Modelos.DTO;
+﻿using PokeMom.Controllers;
+using PokeMom.Modelos;
 using PokeMom.Utils;
-using RestSharp;
 
 namespace PokeMom.Menus;
 
 internal class MenuPokemonDisponiveis : Menu
 {
-    private RestClient client;
+    private string url;
+    private readonly PokeMomService service;
 
     public MenuPokemonDisponiveis(string titulo, Usuario usuario) : base(titulo, usuario)
     {
-        client = new RestClient("https://pokeapi.co/api/v2/pokemon");
+        url = "https://pokeapi.co/api/v2/pokemon";
+        service = new PokeMomService();
     }
 
     public override void Prompt()
     {
         base.Prompt();
 
-        var requestLista = new RestRequest("/", Method.Get);
-        var respostaLista = client.GetAsync<ListaPokemonDTO>(requestLista).Result;
-        var listaPokemon = respostaLista!.Pokemons;
+        var listaPokemonDTO = service.ListarPokemonDisponiveis(url);
+        var listaPokemon = listaPokemonDTO!.Pokemons;
 
         for (int i = 0; i < listaPokemon!.Count; i++)
         {
@@ -41,16 +41,16 @@ internal class MenuPokemonDisponiveis : Menu
         switch (opcao)
         {
             case "a":
-                if (respostaLista.PaginaAnterior != null)
+                if (listaPokemonDTO.PaginaAnterior != null)
                 {
-                    client = new RestClient(respostaLista.PaginaAnterior);
+                    url = listaPokemonDTO.PaginaAnterior;
                 }
                 Prompt();
                 return;
             case "p":
-                if (respostaLista.ProximaPagina != null)
+                if (listaPokemonDTO.ProximaPagina != null)
                 {
-                    client = new RestClient(respostaLista.ProximaPagina!);
+                    url = listaPokemonDTO.ProximaPagina!;
                 }
                 Prompt();
                 return;
@@ -60,10 +60,12 @@ internal class MenuPokemonDisponiveis : Menu
         {
             var pokemon = listaPokemon[int.Parse(opcao!) - 1];
 
-            new MenuAdocaoPokemon("Menu Adocao Pokémon", Usuario, pokemon).Prompt();
+            new MenuAdocaoPokemon("Menu Adocao Pokémon", Usuario!, pokemon).Prompt();
         }
         else
         {
+            Console.Clear();
+
             Console.WriteLine("Digite uma opção válida.\n\n");
             Console.WriteLine("Aperte qualquer tecla para continuar...");
 

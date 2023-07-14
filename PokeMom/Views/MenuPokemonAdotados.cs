@@ -12,10 +12,17 @@ internal class MenuPokemonAdotados : Menu
     {
         base.Prompt();
 
-        foreach (var pokemon in Usuario.PokemonAdotados)
+        if (Usuario!.PokemonAdotados.Count != 0)
         {
-            Console.WriteLine(pokemon);
-            Console.WriteLine();
+            foreach (var pokemon in Usuario!.PokemonAdotados)
+            {
+                Console.WriteLine(pokemon);
+                Console.WriteLine();
+            }
+        }
+        else
+        {
+            Console.WriteLine("Você ainda não adotou nenhum Pokémon :(");
         }
 
         Console.WriteLine("\nAperte qualquer tecla para sair...");

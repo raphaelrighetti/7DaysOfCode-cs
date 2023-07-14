@@ -1,4 +1,4 @@
-﻿using PokeMom.Modelos.DTO;
+﻿using PokeMom.Models;
 using PokeMom.Utils;
 using System.Text.Json.Serialization;
 
@@ -25,13 +25,13 @@ internal record Pokemon
     [JsonPropertyName("weight")]
     public int Peso { get; init; }
     [JsonPropertyName("abilities")]
-    public List<HabilidadeDTO>? Habilidades { get; init; }
+    public List<Habilidade>? Habilidades { get; init; }
 
     public override string ToString()
     {
         return $"Nome: {Nome}\n" +
             $"Altura: {Altura}\n" +
             $"Peso: {Peso}\n" +
-            $"Primeira habilidade: {Habilidades![0].Habilidade}";
+            $"Primeira habilidade: {Habilidades![0].Nome}";
     }
 }

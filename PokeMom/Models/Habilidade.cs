@@ -1,21 +1,21 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace PokeMom.Modelos.DTO;
+namespace PokeMom.Models;
 
-internal record HabilidadeDTO
+internal record Habilidade
 {
-    private string? habilidade;
+    private string? nome;
 
     public JsonElement? Ability { get; init; }
-    public string Habilidade
+    public string Nome
     {
         get
         {
-            habilidade ??= JsonSerializer.Deserialize<ConteudoHabilidadeDTO>(Ability!.Value)!.Nome!;
+            nome ??= Ability!.Value.Deserialize<ConteudoHabilidadeDTO>()!.Nome!;
 
-            return habilidade;
-        } 
+            return nome;
+        }
     }
 
     private record ConteudoHabilidadeDTO

@@ -1,29 +1,30 @@
-﻿using PokeMom.Modelos;
+﻿using PokeMom.Controllers;
+using PokeMom.Modelos;
 using PokeMom.Modelos.DTO;
 using PokeMom.Utils;
-using RestSharp;
 
 namespace PokeMom.Menus;
 
 internal class MenuAdocaoPokemon : Menu
 {
-    private readonly RestClient client;
+    private readonly PokeMomService service;
+    private readonly string url;
 
     public MenuAdocaoPokemon(string titulo, Usuario usuario, PokemonListagemDTO pokemon) : base(titulo, usuario)
     {
-        client = new RestClient($"https://pokeapi.co/api/v2/pokemon/{pokemon.Nome}");
+        url = $"https://pokeapi.co/api/v2/pokemon/{pokemon.Nome}";
+        service = new PokeMomService();
     }
 
     public override void Prompt()
     {
         base.Prompt();
 
-        var requestPokemon = new RestRequest($"/", Method.Get);
-        var pokemon = client.GetAsync<Pokemon>(requestPokemon).Result;
+        var pokemon = service.DetalharPokemonEspecifico(url);
 
         Console.WriteLine(pokemon);
-        Console.WriteLine("\nAperte \"1\" para adotar este Pokémon\n" +
-            "Aperte qualquer outra tecla para voltar para a listagem de Pokémon...");
+        Console.WriteLine("\nDigite \"1\" e aperte enter para adotar este Pokémon\n" +
+            "Digite qualquer coisa ou apenas aperte enter para voltar para a listagem de Pokémon...");
 
         var opcao = Console.ReadLine();
 
@@ -37,7 +38,7 @@ internal class MenuAdocaoPokemon : Menu
         {
             Console.Clear();
 
-            Usuario.PokemonAdotados.Add(pokemon!);
+            Usuario!.PokemonAdotados.Add(pokemon!);
 
             Console.WriteLine($"{pokemon!.Nome} adotado com sucesso!");
             Console.WriteLine("\nAperte qualquer tecla para continuar...");

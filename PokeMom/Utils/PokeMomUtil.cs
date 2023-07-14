@@ -26,8 +26,7 @@ internal static class PokeMomUtil
 
     public static bool OpcaoEhValida(string? opcao)
     {
-        if (opcao == null) return false;
-        if (opcao.Equals("")) return false;
+        if (string.IsNullOrEmpty(opcao)) return false;
 
         return true;
     }
