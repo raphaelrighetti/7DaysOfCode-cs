@@ -15,6 +15,8 @@ internal abstract class Menu
 
     public virtual void Prompt()
     {
+        Usuario?.AtualizarStatsPokemon();
+
         Console.Clear();
 
         ExibirTitulo();

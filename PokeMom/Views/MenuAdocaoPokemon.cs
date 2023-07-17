@@ -34,11 +34,23 @@ internal class MenuAdocaoPokemon : Menu
         {
             return;
         }
+        else if (Usuario!.Pokemon != null)
+        {
+            Console.Clear();
+
+            Console.WriteLine("Você já adotou um Pokémon, aproveite-o!");
+            Console.WriteLine("\nAperte qualquer tecla para continuar...");
+
+            Console.ReadKey();
+
+            return;
+        }
         else
         {
             Console.Clear();
 
-            Usuario!.PokemonAdotados.Add(pokemon!);
+            Usuario!.Pokemon = pokemon;
+            pokemon.Usuario = Usuario;
 
             Console.WriteLine($"{pokemon!.Nome} adotado com sucesso!");
             Console.WriteLine("\nAperte qualquer tecla para continuar...");

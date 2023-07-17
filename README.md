@@ -55,3 +55,11 @@ Entretanto, eu acho que criar controladores e fazer com que eles mostrem as View
 O maior problema pra mim em aplicar essa arquitetura é que um controlador precisa de uma View para ser chamado, o que faz ou com que o controlador tenha parte da responsabilidade de uma View, ou com que as Views tenham que ter uma complexidade maior para conseguir transitar os inputs do usuário entre outros controllers e etc. Não é como se essa fosse uma aplicação que necessita de um formato específico pra transitar um JSON para fazer alguma ação de CRUD ou coisa do tipo, tudo o que ela faz que precisa de input do usuário até agora é muito simples, mas enfim.
 
 Fiz algumas mudanças no meu código, adicionando uma nova classe de serviço que é responsável por fazer as requisições à API do Pokémon isolando esse acesso aos recursos e deixando mais fácil de fazer uma futura modificação nisso e organizando melhor o restante das classes que eu já tenho, mas pode ser que eu mude esse esquema que eu fiz dependendo do próximo desafio que eu for resolver.
+
+### Dia 5
+
+O desafio desse dia consistia em adicionar novas interações que o usuário pode fazer com o seu Pokémon adotado, tais como alimentá-lo, brincar com ele e colocá-lo para dormir.
+
+Eu criei todas essas novas interações e modifiquei um pouco o funcionamento de algumas outras partes do sistema, removendo a possibilidade de adotar mais de um Pokémon e etc. Além disso, fiz uma lógica que reduz todos os stats do Pokémon adotado baseado no tempo do mundo real, de forma que toda vez que o usuário interage com um menu a lógica é aplicada e o tempo passado vai acumulando até chegar no limite e os stats serem reduzidos. Essa lógica também funciona se passar muito tempo entre as interações, de forma que os stats são reduzidos baseado em quantas vezes o limite cabe dentro do tempo acumulado.
+
+Ainda planejo adicionar mais coisas que fariam sentido serem adicionadas nesse desafio, mas foquei em fazer o que foi pedido e estou bem satisfeito com o resultado.

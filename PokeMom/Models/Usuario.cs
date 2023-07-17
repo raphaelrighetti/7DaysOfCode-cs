@@ -5,9 +5,15 @@ internal class Usuario
     public Usuario(string nome)
     {
         Nome = nome;
-        PokemonAdotados = new();
     }
 
     public string Nome { get; set; }
-    public List<Pokemon> PokemonAdotados { get; set; }
+    public Pokemon? Pokemon { get; set; }
+
+    public void AtualizarStatsPokemon()
+    {
+        if (Pokemon == null) return;
+
+        Pokemon.AtualizarStats();
+    }
 }
