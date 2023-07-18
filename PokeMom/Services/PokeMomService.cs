@@ -13,19 +13,49 @@ internal class PokeMomService
         client = new RestClient();
     }
 
-    public ListaPokemonDTO ListarPokemonDisponiveis(string url)
+    public ListaPokemonDTO? ListarPokemonDisponiveis(string url)
     {
         var requestLista = new RestRequest(url, Method.Get);
-        var respostaLista = client.GetAsync<ListaPokemonDTO>(requestLista).Result;
+        ListaPokemonDTO? respostaLista;
+        
+        try
+        {
+            respostaLista = client.GetAsync<ListaPokemonDTO>(requestLista).Result;
+        }
+        catch (Exception ex)
+        {
+            MostrarMensagemExcecao(ex.Message);
+            return null;
+        }
 
-        return respostaLista!;
+        return respostaLista;
     }
 
-    public PokemonDTO DetalharPokemonEspecifico(string url)
+    public PokemonDTO? DetalharPokemonEspecifico(string url)
     {
         var requestPokemon = new RestRequest(url, Method.Get);
-        var pokemon = client.GetAsync<PokemonDTO>(requestPokemon).Result;
+        PokemonDTO? pokemonDTO;
 
-        return pokemon!;
+        try
+        {
+            pokemonDTO = client.GetAsync<PokemonDTO>(requestPokemon).Result;
+        }
+        catch (Exception ex)
+        {
+            MostrarMensagemExcecao(ex.Message);
+            return null;
+        }
+
+        return pokemonDTO;
+    }
+
+    private void MostrarMensagemExcecao(string mensagem)
+    {
+        Console.Clear();
+
+        Console.WriteLine($"Deu pau: {mensagem}");
+        Console.WriteLine("\nAperte qualquer tecla para continuar...");
+
+        Console.ReadKey();
     }
 }

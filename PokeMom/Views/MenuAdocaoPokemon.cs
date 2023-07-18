@@ -22,6 +22,12 @@ internal class MenuAdocaoPokemon : Menu
 
         var pokemonDTO = service.DetalharPokemonEspecifico(url);
 
+        if (pokemonDTO == null)
+        {
+            MensagemErroInesperado();
+            return;
+        }
+
         Console.WriteLine(pokemonDTO);
         Console.WriteLine("\nDigite \"1\" e aperte enter para adotar este Pokémon\n" +
             "Digite qualquer coisa ou apenas aperte enter para voltar para a listagem de Pokémon...");

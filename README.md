@@ -71,3 +71,11 @@ O desafio desse dia consistia em separar a classe que representa o retorno da re
 Foi sugerido o uso da biblioteca "AutoMapper" para fazer a conversão entre esses objetos, e utilizando ela pude ver como ela realmente facilita na hora de converter um objeto em outro, tive que escrever pouquíssimas linhas de código para fazer a conversão que daria muito mais trabalho repetitivo se eu fosse fazer na mão.
 
 O desafio não entrou muito em detalhes sobre os benefícios de isolar os objetos de tranferência de dados, mas é algo realmente importante e que pude aplicar de forma melhor neste desafio.
+
+### Dia 7
+
+O desafio desse dia consistia em tratar os inputs do usuário, não permitindo que opções inválidas e que quebrariam o programa em sua execução sejam enviadas pelo usuário e tratando possíveis exceções ou comportamentos inesperados que poderiam ocorrer nas requisições que fazemos à API.
+
+Entretanto, eu já havia feito o tratamento dos inputs do usuário bem no começo do desenvolvimento do projeto, a única coisa que faltava era tratar as requisições feitas à API, o que fiz utilizando um try / catch e aplicando uma lógica que mostra a mensagem de erro quando uma exceção ocorrer e mostra uma mensagem genérica quando o retorno esperado da requisição em questão for null.
+
+Foi um desafio bem simples de se resolver, por isso resolvi fazer dois em um dia, já que eu já tinha acesso a ele por conta de não ter feito nenhum desafio no fim de semana.

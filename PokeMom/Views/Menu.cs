@@ -22,6 +22,16 @@ internal abstract class Menu
         ExibirTitulo();
     }
 
+    protected void MensagemErroInesperado()
+    {
+        Console.Clear();
+
+        Console.WriteLine("Ocorreu um erro inseperado ao tentar acessar recursos da API, tente novamente mais tarde!");
+        Console.WriteLine("\nAperte qualquer tecla para continuar...");
+
+        Console.ReadKey();
+    }
+
     private void ExibirTitulo()
     {
         string barraEstilizada = string.Empty.PadLeft(Titulo.Length, '*');

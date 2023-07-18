@@ -20,7 +20,14 @@ internal class MenuPokemonDisponiveis : Menu
         base.Prompt();
 
         var listaPokemonDTO = service.ListarPokemonDisponiveis(url);
-        var listaPokemon = listaPokemonDTO!.Pokemons;
+
+        if (listaPokemonDTO == null)
+        {
+            MensagemErroInesperado();
+            return;
+        }
+
+        var listaPokemon = listaPokemonDTO.Pokemons;
 
         for (int i = 0; i < listaPokemon!.Count; i++)
         {
