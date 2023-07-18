@@ -20,9 +20,9 @@ internal class MenuAdocaoPokemon : Menu
     {
         base.Prompt();
 
-        var pokemon = service.DetalharPokemonEspecifico(url);
+        var pokemonDTO = service.DetalharPokemonEspecifico(url);
 
-        Console.WriteLine(pokemon);
+        Console.WriteLine(pokemonDTO);
         Console.WriteLine("\nDigite \"1\" e aperte enter para adotar este Pokémon\n" +
             "Digite qualquer coisa ou apenas aperte enter para voltar para a listagem de Pokémon...");
 
@@ -49,8 +49,10 @@ internal class MenuAdocaoPokemon : Menu
         {
             Console.Clear();
 
+            var pokemon = MapperUtil.ConverterPokemonDTOParaPokemon(pokemonDTO);
+
             Usuario!.Pokemon = pokemon;
-            pokemon.Usuario = Usuario;
+            pokemon.Dono = Usuario;
 
             Console.WriteLine($"{pokemon!.Nome} adotado com sucesso!");
             Console.WriteLine("\nAperte qualquer tecla para continuar...");

@@ -1,13 +1,12 @@
-﻿using PokeMom.Models;
+﻿using PokeMom.Modelos;
 using PokeMom.Utils;
 using PokeMom.Views;
-using System.Text.Json.Serialization;
 
-namespace PokeMom.Modelos;
+namespace PokeMom.Models;
 
 internal class Pokemon
 {
-    private string? nome;
+    private string nome;
 
     private readonly int fomeMax = new Random().Next(10, 21);
     private readonly int humorMax = new Random().Next(10, 21);
@@ -27,26 +26,30 @@ internal class Pokemon
         Sono = sonoMax;
     }
 
-    public Usuario? Usuario { get; set; }
+    public Pokemon(string nome, int altura, int peso, List<Habilidade> habilidades, Usuario dono)
+    {
+        this.nome = nome;
+        Altura = altura;
+        Peso = peso;
+        Habilidades = habilidades;
+        Dono = dono;
+    }
 
-    [JsonPropertyName("name")]
-    public string? Nome
+    public string Nome
     {
         get
         {
-            return PokeMomUtil.Capitalize(nome!);
+            return PokeMomUtil.Capitalize(nome);
         }
-        init
+        set
         {
             nome = value;
         }
     }
-    [JsonPropertyName("height")]
-    public int Altura { get; init; }
-    [JsonPropertyName("weight")]
-    public int Peso { get; init; }
-    [JsonPropertyName("abilities")]
-    public List<Habilidade>? Habilidades { get; init; }
+    public int Altura { get; set; }
+    public int Peso { get; set; }
+    public List<Habilidade> Habilidades { get; set; }
+    public Usuario Dono { get; set; }
 
     public int Fome { get; private set; }
     public int Humor { get; private set; }
@@ -112,7 +115,7 @@ internal class Pokemon
         {
             vivo = false;
 
-            new MenuMorte("Menu Morte", Usuario).Prompt();
+            new MenuMorte("Menu Morte", Dono).Prompt();
         }
     }
 

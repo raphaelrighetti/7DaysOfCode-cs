@@ -1,4 +1,6 @@
-﻿namespace PokeMom.Modelos;
+﻿using PokeMom.Models;
+
+namespace PokeMom.Modelos;
 
 internal class Usuario
 {

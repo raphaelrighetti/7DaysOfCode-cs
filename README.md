@@ -63,3 +63,11 @@ O desafio desse dia consistia em adicionar novas interações que o usuário pod
 Eu criei todas essas novas interações e modifiquei um pouco o funcionamento de algumas outras partes do sistema, removendo a possibilidade de adotar mais de um Pokémon e etc. Além disso, fiz uma lógica que reduz todos os stats do Pokémon adotado baseado no tempo do mundo real, de forma que toda vez que o usuário interage com um menu a lógica é aplicada e o tempo passado vai acumulando até chegar no limite e os stats serem reduzidos. Essa lógica também funciona se passar muito tempo entre as interações, de forma que os stats são reduzidos baseado em quantas vezes o limite cabe dentro do tempo acumulado.
 
 Ainda planejo adicionar mais coisas que fariam sentido serem adicionadas nesse desafio, mas foquei em fazer o que foi pedido e estou bem satisfeito com o resultado.
+
+### Dia 6
+
+O desafio desse dia consistia em separar a classe que representa o retorno da requisição à API e criar uma nova pra representar o Pokémon utilizado na aplicação, que possui todos os stats definidos e tudo mais.
+
+Foi sugerido o uso da biblioteca "AutoMapper" para fazer a conversão entre esses objetos, e utilizando ela pude ver como ela realmente facilita na hora de converter um objeto em outro, tive que escrever pouquíssimas linhas de código para fazer a conversão que daria muito mais trabalho repetitivo se eu fosse fazer na mão.
+
+O desafio não entrou muito em detalhes sobre os benefícios de isolar os objetos de tranferência de dados, mas é algo realmente importante e que pude aplicar de forma melhor neste desafio.

@@ -1,5 +1,5 @@
-﻿using PokeMom.Modelos;
-using PokeMom.Modelos.DTO;
+﻿using PokeMom.Modelos.DTO;
+using PokeMom.Models.DTO;
 using RestSharp;
 
 namespace PokeMom.Controllers;
@@ -21,10 +21,10 @@ internal class PokeMomService
         return respostaLista!;
     }
 
-    public Pokemon DetalharPokemonEspecifico(string url)
+    public PokemonDTO DetalharPokemonEspecifico(string url)
     {
         var requestPokemon = new RestRequest(url, Method.Get);
-        var pokemon = client.GetAsync<Pokemon>(requestPokemon).Result;
+        var pokemon = client.GetAsync<PokemonDTO>(requestPokemon).Result;
 
         return pokemon!;
     }
