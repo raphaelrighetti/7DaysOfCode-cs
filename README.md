@@ -6,6 +6,12 @@ PokeMom é uma aplicação de console que funciona como um jogo Tamagochi, mas q
 
 *Este é um projeto desenvolvido ao longo do desafio "7DaysOfCode - C#" da Alura.*
 
+## Como rodar?
+
+Para rodar o projeto, você precisa estar utilizando um sistema operacional Windows ou dar um jeito de rodar um arquivo ".exe".
+
+Para baixar, basta ir nas "Releases" desse repositório, baixar o conteudo e executar o arquivo "PokeMom.exe", assim você rodará o programa e poderá testá-lo você mesmo.
+
 ## Progresso no desafio
 
 ### Dia 1
@@ -79,3 +85,11 @@ O desafio desse dia consistia em tratar os inputs do usuário, não permitindo q
 Entretanto, eu já havia feito o tratamento dos inputs do usuário bem no começo do desenvolvimento do projeto, a única coisa que faltava era tratar as requisições feitas à API, o que fiz utilizando um try / catch e aplicando uma lógica que mostra a mensagem de erro quando uma exceção ocorrer e mostra uma mensagem genérica quando o retorno esperado da requisição em questão for null.
 
 Foi um desafio bem simples de se resolver, por isso resolvi fazer dois em um dia, já que eu já tinha acesso a ele por conta de não ter feito nenhum desafio no fim de semana.
+
+### Conclusão
+
+Nesse 7DaysOfCode pude praticar bastante as minhas habilidades em C#, desenvolvendo um projeto bem interessante e interativo com bastante lógica e utilizando bibliotecas externas e a API do Pokémon.
+
+Gostei bastante de ter feito todos os desafios e pude aprender algumas coisas novas no decorrer desses dias, alguns detalhes da linguagem e coisas que eu não sabia, como expressões menores que simplificam coisas que necessitariam de mais código para funcionar e etc.
+
+Estou feliz com o resultado que alcancei.
